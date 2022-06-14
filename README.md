@@ -1,48 +1,69 @@
-# Project Name
-> Outline a brief description of your project.
+# Skin Cancer Detection Using A Custom Convolutional Neural Network in TensorFlow
 
 
 ## Table of Contents
-* [General Info](#general-information)
-* [Technologies Used](#technologies-used)
-* [Conclusions](#conclusions)
-* [Acknowledgements](#acknowledgements)
+* Brief Problem Statement
+* Data Understanding
+* Project Pipeline
+* Conclusions
+* Technologies Used
 
 <!-- You can include any other section that is pertinent to your problem -->
 
-## General Information
-- Provide general information about your project here.
-- What is the background of your project?
-- What is the business probem that your project is trying to solve?
-- What is the dataset that is being used?
+## Problem Statement
+To build a CNN based model which can accurately detect melanoma. Melanoma is a type of cancer that can be deadly if not detected early. It accounts for 75% of skin cancer deaths. A solution which can evaluate images and alert the dermatologists about the presence of melanoma has the potential to reduce a lot of manual effort needed in diagnosis.![image](https://user-images.githubusercontent.com/96614914/173596733-45446e8a-4544-4265-8956-fe2e73926cfb.png)
 
-<!-- You don't have to answer all the questions - just the ones relevant to your project. -->
+
+## Data Understanding
+The dataset consists of 2357 images of malignant and benign oncological diseases, which were formed from the International Skin Imaging Collaboration (ISIC). All images were sorted according to the classification taken with ISIC, and all subsets were divided into the same number of images, with the exception of melanomas and moles, whose images are slightly dominant.The data set contains the following diseases:
+- Actinic keratosis
+- Basal cell carcinoma
+- Dermatofibroma
+- Melanoma
+- Nevus
+- Pigmented benign keratosis
+- Seborrheic keratosis
+- Squamous cell carcinoma
+- Vascular lesion
+
+## Project Pipeline
+- Data Reading/Data Understanding → Defining the path for train and test images 
+
+- Dataset Creation→ Create train & validation dataset from the train directory with a batch size of 32. Resized the images to 180*180.
+
+- Dataset visualization → Create a code to visualize one instance of all the nine classes present in the dataset 
+
+- Model Building & training : 
+  * Create a CNN model, which can accurately detect 9 classes present in the dataset. While building the model rescale images to normalize pixel values between (0,1) i.e. divide by 255.0.
+  * Chose an appropriate optimizer "adam" and loss function "SparseCategoricalCrossentropy" for model training
+  * Train the model for ~20 epochs
+  * Documented the findings after the model fit.
+
+- Choosing an appropriate data augmentation strategy to resolve underfitting/overfitting i.e. "Data Augmentation for Minority Class"
+
+- Handling class imbalances: Rectified class imbalances present in the training dataset with Augmentor library
+
 
 ## Conclusions
-- Conclusion 1 from the analysis
-- Conclusion 2 from the analysis
-- Conclusion 3 from the analysis
-- Conclusion 4 from the analysis
+-Accuracy on training data has increased significantly by handling class imbalance using Augmentor library
 
-<!-- You don't have to answer all the questions - just the ones relevant to your project. -->
+-Not to forget the dataset was not sufficient for CNN model too. Added more data via data augmentation(increasing the number of samples) to solve overfitting, but overfitting persists.
+
+-The problem of overfitting can be solved by add more layer,neurons or adding dropout layers.
+
+-The Model can be further improved by tuning the hyperparameters
 
 
 ## Technologies Used
-- library - version 1.0
-- library - version 2.0
-- library - version 3.0
-
-<!-- As the libraries versions keep on changing, it is recommended to mention the version of library used in this project -->
-
-## Acknowledgements
-Give credit here.
-- This project was inspired by...
-- References if any...
-- This project was based on [this tutorial](https://www.example.com).
+- TensorFlow
+- Keras
+- Augmentor
+- Matplotlib
+- Sequential CNN model
 
 
 ## Contact
-Created by [@githubusername] - feel free to contact me!
+Created by [@devikadevs] - feel free to contact me!
 
 
 <!-- Optional -->
